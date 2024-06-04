@@ -1,0 +1,106 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+// Function to print multiplication table of a number
+void printMultiplicationTable(int num, int limit = 10) {
+  cout << "Multiplication Table of " << num << endl;
+  for (int i = 1; i <= limit; ++i) {
+    cout << num << " * " << i << " = " << num * i << endl;
+  }
+}
+
+// Function to calculate factorial of a number
+int factorial(int num) {
+  if (num == 0) {
+    return 1;
+  } else {
+    return num * factorial(num - 1);
+  }
+}
+
+// Function to check if a number is a palindrome
+bool isPalindrome(int num) {
+  int originalNum = num;
+  int reversedNum = 0;
+  while (num != 0) {
+    int digit = num % 10;
+    reversedNum = reversedNum * 10 + digit;
+    num /= 10;
+  }
+  return originalNum == reversedNum;
+}
+
+// Function to check if a number is an Armstrong number
+bool isArmstrongNumber(int num) {
+  int originalNum = num;
+  int numberOfDigits = 0;
+  int sum = 0;
+
+  // Find number of digits
+  while (originalNum != 0) {
+    originalNum /= 10;
+    numberOfDigits++;
+  }
+
+  originalNum = num;
+  // Calculate sum of power of digits
+  while (originalNum != 0) {
+    int digit = originalNum % 10;
+    sum += pow(digit, numberOfDigits);
+    originalNum /= 10;
+  }
+
+  return sum == num;
+}
+
+int main() {
+  int num, limit;
+
+  // Get input for multiplication table
+  cout << "Enter a number: ";
+  cin >> num;
+  cout << "Enter limit (optional, defaults to 10): ";
+  cin.ignore(); // Clear newline character after num input
+  cin >> limit;
+  printMultiplicationTable(num, limit);
+
+  // Get input for factorial
+  cout << "Enter a number for factorial: ";
+  cin >> num;
+  cout << num << "! = " << factorial(num) << endl;
+
+  // Get input for palindrome check
+  cout << "Enter a number to check for palindrome: ";
+  cin >> num;
+  if (isPalindrome(num)) {
+    cout << num << " is a palindrome." << endl;
+  } else {
+    cout << num << " is not a palindrome." << endl;
+  }
+
+  // Get input for Armstrong number check
+  cout << "Enter a number to check for Armstrong number: ";
+  cin >> num;
+  if (isArmstrongNumber(num)) {
+    cout << num << " is an Armstrong number." << endl;
+  } else {
+    cout << num << " is not an Armstrong number." << endl;
+  }
+
+  return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
